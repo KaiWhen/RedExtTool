@@ -12,6 +12,15 @@ def get_resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 
+def get_temp_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    
+    return os.path.join(base_path, relative_path)
+
+
 def load_json(filename):
     try:
         filepath = get_resource_path(filename)

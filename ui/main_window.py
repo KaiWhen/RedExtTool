@@ -2,6 +2,7 @@ import os
 import math
 import json
 from pathlib import Path
+from PyQt5 import QtGui
 from PyQt5.QtWidgets import (QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
                              QLabel, QGroupBox, QScrollArea, QTabWidget,
                              QTextEdit, QPushButton)
@@ -9,18 +10,23 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap, QFont
 
 from core.hotkey_manager import HotkeySignals, HotkeyManager
-from core.data_loader import get_resource_path, load_all_path_data
+from core.data_loader import get_resource_path, get_temp_path, load_all_path_data
 from ui.widgets import HoverSpinBox
 from ui.dialogs import HotkeyDialog
 
+from version import __version__
+
 REDEXTTOOL_DIR = Path.home() / "AppData/Roaming/RedExtTool"
 CURR_IGT_FILE = REDEXTTOOL_DIR / "curr_igt.json"
+ICON_FILE = get_temp_path("favicon.ico")
+# ICON_FILE = "ui/resources/icon.png"
 
 
 class PathFinder(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Red Extended Path Tool v1.0.0")
+        self.setWindowTitle(f"Red Extended Path Tool v{__version__}")
+        self.setWindowIcon(QtGui.QIcon(ICON_FILE))
         self.setGeometry(100, 100, 700, 900)
 
         self.path_data = load_all_path_data()
