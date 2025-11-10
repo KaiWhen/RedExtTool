@@ -12,16 +12,15 @@ CONFIG_FILE = CONFIG_DIR / "hotkeys.json"
 
 
 class HotkeySignals(QObject):
-    """Signals for hotkey events to communicate with Qt main thread"""
     hp_increase = pyqtSignal()
     hp_decrease2 = pyqtSignal()
     hp_decrease3 = pyqtSignal()
-    maxhp_increase = pyqtSignal()
     maxhp_decrease = pyqtSignal()
-    atk_increase = pyqtSignal()
+    maxhp_increase = pyqtSignal()
     atk_decrease = pyqtSignal()
-    def_increase = pyqtSignal()
+    atk_increase = pyqtSignal()
     def_decrease = pyqtSignal()
+    def_increase = pyqtSignal()
     tab_cycle = pyqtSignal()
 
 
@@ -45,12 +44,12 @@ class HotkeyManager:
             'hp_increase': 'f1',
             'hp_decrease2': 'f2',
             'hp_decrease3': 'f3',
-            'maxhp_increase': 'f4',
-            'maxhp_decrease': 'f5',
-            'atk_increase': 'f6',
-            'atk_decrease': 'f7',
-            'def_increase': 'f8',
-            'def_decrease': 'f9',
+            'maxhp_decrease': 'f4',
+            'maxhp_increase': 'f5',
+            'atk_decrease': 'f6',
+            'atk_increase': 'f7',
+            'def_decrease': 'f8',
+            'def_increase': 'f9',
             'tab_cycle': 'tab'
         }
 

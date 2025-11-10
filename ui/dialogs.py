@@ -24,12 +24,12 @@ class HotkeyDialog(QDialog):
             'hp_increase': '+ HP:',
             'hp_decrease2': '-2 HP:',
             'hp_decrease3': '-3 HP:',
-            'maxhp_increase': '+ Max HP:',
             'maxhp_decrease': '- Max HP:',
-            'atk_increase': '+ Atk:',
+            'maxhp_increase': '+ Max HP:',
             'atk_decrease': '- Atk:',
-            'def_increase': '+ Def:',
+            'atk_increase': '+ Atk:',
             'def_decrease': '- Def:',
+            'def_increase': '+ Def:',
             'tab_cycle': 'Cycle Paths:'
         }
 
@@ -79,12 +79,12 @@ class HotkeyDialog(QDialog):
             'hp_increase': '+ HP',
             'hp_decrease2': '-2 HP:',
             'hp_decrease3': '-3 HP:',
-            'maxhp_increase': '+ Max HP',
             'maxhp_decrease': '- Max HP',
-            'atk_increase': '+ Atk',
+            'maxhp_increase': '+ Max HP',
             'atk_decrease': '- Atk',
-            'def_increase': '+ Def',
+            'atk_increase': '+ Atk',
             'def_decrease': '- Def',
+            'def_increase': '+ Def',
             'tab_cycle': 'Cycle Paths'
         }
         return labels.get(key, key)
@@ -95,12 +95,12 @@ class HotkeyDialog(QDialog):
             'hp_increase': 'f1',
             'hp_decrease2': 'f2',
             'hp_decrease3': 'f3',
-            'maxhp_increase': 'f4',
-            'maxhp_decrease': 'f5',
-            'atk_increase': 'f6',
-            'atk_decrease': 'f7',
-            'def_increase': 'f8',
-            'def_decrease': 'f9',
+            'maxhp_decrease': 'f4',
+            'maxhp_increase': 'f5',
+            'atk_decrease': 'f6',
+            'atk_increase': 'f7',
+            'def_decrease': 'f8',
+            'def_increase': 'f9',
             'tab_cycle': 'tab'
         }
 
