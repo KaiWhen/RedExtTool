@@ -1,5 +1,4 @@
 import os
-import math
 import json
 from pathlib import Path
 from PyQt5 import QtGui
@@ -19,7 +18,6 @@ from version import __version__
 REDEXTTOOL_DIR = Path.home() / "AppData/Roaming/RedExtTool"
 CURR_IGT_FILE = REDEXTTOOL_DIR / "curr_igt.json"
 ICON_FILE = get_temp_path("favicon.ico")
-# ICON_FILE = "ui/resources/icon.png"
 
 
 class PathFinder(QMainWindow):
