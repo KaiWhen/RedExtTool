@@ -38,7 +38,7 @@ class HotkeyManager:
                 with open(CONFIG_FILE, 'r') as f:
                     return json.load(f)
         except:
-            pass
+            os.mkdir(CONFIG_FILE)
         
         return {
             'hp_increase': 'f1',
