@@ -49,7 +49,8 @@ class PathFinder(QMainWindow):
         self.hotkey_signals.atk_decrease.connect(lambda: self.change_stat('atk', -1))
         self.hotkey_signals.def_increase.connect(lambda: self.change_stat('def', 1))
         self.hotkey_signals.def_decrease.connect(lambda: self.change_stat('def', -1))
-        self.hotkey_signals.tab_cycle.connect(self.cycle_tab)
+        self.hotkey_signals.tab_cycle.connect(lambda: self.cycle_tab(False))
+        self.hotkey_signals.tab_cycle_reverse.connect(lambda: self.cycle_tab(True))
 
 
     def change_stat(self, stat_name, delta):
@@ -67,9 +68,9 @@ class PathFinder(QMainWindow):
                 spinbox.setValue(new_value)
 
 
-    def cycle_tab(self):
+    def cycle_tab(self, reverse: bool):
         current_index = self.tab_widget.currentIndex()
-        next_index = (current_index + 1) % self.tab_widget.count()
+        next_index = (current_index + (-1 if reverse else 1)) % self.tab_widget.count()
         self.tab_widget.setCurrentIndex(next_index)
 
 

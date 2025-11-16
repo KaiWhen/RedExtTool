@@ -22,6 +22,7 @@ class HotkeySignals(QObject):
     def_decrease = pyqtSignal()
     def_increase = pyqtSignal()
     tab_cycle = pyqtSignal()
+    tab_cycle_reverse = pyqtSignal()
 
 
 class HotkeyManager:
@@ -50,7 +51,8 @@ class HotkeyManager:
             'atk_increase': 'f7',
             'def_decrease': 'f8',
             'def_increase': 'f9',
-            'tab_cycle': 'tab'
+            'tab_cycle': 'tab',
+            'tab_cycle_reverse': 'ctrl+tab'
         }
 
 
@@ -181,6 +183,8 @@ class HotkeyManager:
             self.signals.def_decrease.emit()
         elif self.check_hotkey('tab_cycle'):
             self.signals.tab_cycle.emit()
+        elif self.check_hotkey('tab_cycle_reverse'):
+            self.signals.tab_cycle_reverse.emit()
 
 
     def on_release(self, key):

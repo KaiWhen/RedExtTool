@@ -148,7 +148,7 @@ class HotkeyLineEdit(QLineEdit):
             return False
         
         for input_field in self.all_inputs.values():
-            if input_field is not self:  # Don't compare with self
+            if input_field is not self:
                 if input_field.text().strip().lower() == hotkey_str:
                     return True
         return False
