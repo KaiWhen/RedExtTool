@@ -53,6 +53,7 @@ def create_images(file: str, path: int):
     path_data = load_json(file)
     for stat in path_data:
         stats = [int(x) for x in stat.strip("()").split(",")]
+        # if stats != [19,21,12,13]: continue
         route2 = path_data[stat]["route2"]
         gate = path_data[stat]["gate"]
         postFight = path_data[stat]["postFight"]
@@ -95,5 +96,6 @@ def create_images(file: str, path: int):
         path_image.save(f"path_data/p{path_data[stat]['path']}/path_images/{stats[0]}_{stats[1]}_{stats[2]}_{stats[3]}.png")
 
 
-create_images("path_data/p3b/p3b.json", 3)
-# create_images("path_data/p2a/p2a.json", 2)
+# create_images("path_data/p3b/p3b.json", 3)
+create_images("path_data/p2a/p2a.json", 2)
+# create_images("path_data/p2b/p2bf18g2g3.json", 2)

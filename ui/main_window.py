@@ -147,7 +147,7 @@ class PathFinder(QMainWindow):
         atk_label.setMinimumWidth(label_minw)
         self.atk_spin = HoverSpinBox()
         self.atk_spin.setFixedHeight(box_height)
-        self.atk_spin.setRange(11, 12)
+        self.atk_spin.setRange(10, 12)
         self.atk_spin.setValue(11)
         self.atk_spin.valueChanged.connect(self.update_display)
         atk_layout.addWidget(atk_label)
