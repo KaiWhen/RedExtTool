@@ -104,7 +104,7 @@ class HotkeyDialog(QDialog):
             'def_decrease': 'f8',
             'def_increase': 'f9',
             'tab_cycle': 'tab',
-            'tab_cycle_reverse': 'ctrl+tab'
+            'tab_cycle_reverse': 'shift+tab'
         }
 
         for key, default_value in defaults.items():

@@ -52,7 +52,7 @@ class HotkeyManager:
             'def_decrease': 'f8',
             'def_increase': 'f9',
             'tab_cycle': 'tab',
-            'tab_cycle_reverse': 'ctrl+tab'
+            'tab_cycle_reverse': 'shift+tab'
         }
 
 
@@ -133,8 +133,6 @@ class HotkeyManager:
                         if Key.shift_l not in self.current_keys and Key.shift_r not in self.current_keys:
                             return False
                     elif req_key == Key.alt_l or req_key == Key.alt_r:
-                        if Key.tab in self.current_keys:
-                            return False
                         if Key.alt_l not in self.current_keys and Key.alt_r not in self.current_keys:
                             return False
                     else:

@@ -91,6 +91,7 @@ class HotkeyLineEdit(QLineEdit):
             Qt.Key_F9: "f9", Qt.Key_F10: "f10", Qt.Key_F11: "f11", Qt.Key_F12: "f12",
             # Special keys
             Qt.Key_Tab: "tab",
+            Qt.Key_Backtab: "tab",
             Qt.Key_Up: "up", Qt.Key_Down: "down", 
             Qt.Key_Left: "left", Qt.Key_Right: "right",
             Qt.Key_Space: "space",

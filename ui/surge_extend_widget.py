@@ -25,7 +25,6 @@ class SurgeExtendWidget(QWidget):
         super().__init__(parent)
 
         self.path_data = load_surge_path_data()
-        #self.current_path = 2
 
         self.hotkey_signals = hotkey_signals
         if self.hotkey_signals is not None:
@@ -39,8 +38,6 @@ class SurgeExtendWidget(QWidget):
         self.hotkey_signals.hp_increase.connect(lambda: self.change_stat('hp', 1))
         self.hotkey_signals.hp_decrease2.connect(lambda: self.change_stat('hp', -2))
         self.hotkey_signals.hp_decrease3.connect(lambda: self.change_stat('hp', -3))
-        #self.hotkey_signals.tab_cycle.connect(lambda: self.cycle_tab(False))
-        #self.hotkey_signals.tab_cycle_reverse.connect(lambda: self.cycle_tab(True))
 
 
     def change_stat(self, stat_name, delta):
@@ -248,19 +245,11 @@ class SurgeExtendWidget(QWidget):
             else:
                 self.logs_text.setPlainText("No frame logs available")
 
-            #path = stats_data.get("path", self.current_path)
-            #stats = [int(x) for x in stats_key.strip("()").split(",")]
-            #stats_str = "_".join(str(x) for x in stats)
             image_path = get_resource_path(f"path_data/surge/path_images/{stats_key}.png")
 
             if os.path.exists(image_path):
                 pixmap = QPixmap(image_path)
                 image_label = self.image_labels[1]
-                #scaled_pixmap = pixmap.scaled(
-                #    image_label.size(), 
-                #    Qt.KeepAspectRatio, 
-                #    Qt.SmoothTransformation
-                #)
                 image_label.setPixmap(pixmap)
             else:
                 self.image_labels[self.current_path].setText(f"Image not found:\n{image_path}")
@@ -269,10 +258,3 @@ class SurgeExtendWidget(QWidget):
             self.igtsec_label.setText("No data for this hp :(")
             self.logs_text.setPlainText("No data for this hp :(")
             self.image_labels[self.current_path].setText("No matching path found for these stats")
-
-
-    def closeEvent(self, event):
-        #self.hotkey_manager.stop()
-        with open(CURR_IGT_FILE, 'w') as file:
-            json.dump({ 'Frame': 0, 'IGTSeconds': "" }, file)
-        event.accept()

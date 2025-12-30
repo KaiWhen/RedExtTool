@@ -1,7 +1,6 @@
 import os
 import json
 from pathlib import Path
-from PyQt5 import QtGui
 from PyQt5.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout,
                              QLabel, QGroupBox, QScrollArea, QTabWidget,
                              QTextEdit, QPushButton)
@@ -11,7 +10,6 @@ from PyQt5.QtGui import QPixmap, QFont
 from core.hotkey_manager import HotkeySignals
 from core.data_loader import get_resource_path, get_temp_path, load_forest_path_data
 from ui.widgets import HoverSpinBox
-from ui.dialogs import HotkeyDialog
 
 from version import __version__
 
@@ -23,18 +21,13 @@ ICON_FILE = get_temp_path("favicon.ico")
 class ForestExtendWidget(QWidget):
     def __init__(self, hotkey_signals: HotkeySignals = None, parent=None):
         super().__init__(parent)
-        #self.setWindowTitle(f"Red Extended Path Tool v{__version__}")
-        #self.setWindowIcon(QtGui.QIcon(ICON_FILE))
-        #self.setGeometry(100, 100, 700, 900)
 
         self.path_data = load_forest_path_data()
         self.current_path = 2
 
         self.hotkey_signals = hotkey_signals
-        #self.hotkey_manager = HotkeyManager(self.hotkey_signals)
         if self.hotkey_signals is not None:
             self.setup_hotkey_connections()
-        #self.hotkey_manager.start()
 
         self.init_ui()
         self.update_display()
@@ -76,12 +69,8 @@ class ForestExtendWidget(QWidget):
 
 
     def init_ui(self):
-        #central_widget = QWidget()
-        #self.setCentralWidget(central_widget)
-
         main_layout = QVBoxLayout()
         self.setLayout(main_layout)
-        #central_widget.setLayout(main_layout)
 
         content_layout = QHBoxLayout()
 
@@ -363,10 +352,3 @@ class ForestExtendWidget(QWidget):
             self.postfight_label.setText("No data for this turtle/path :(")
             self.logs_text.setPlainText("No data for this turtle/path :(")
             self.image_labels[self.current_path].setText("No matching path found for these stats")
-
-
-    def closeEvent(self, event):
-        #self.hotkey_manager.stop()
-        with open(CURR_IGT_FILE, 'w') as file:
-            json.dump({ 'Frame': 0, 'IGTSeconds': "" }, file)
-        event.accept()
