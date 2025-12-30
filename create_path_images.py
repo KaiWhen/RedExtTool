@@ -11,9 +11,12 @@ from Screenshot import Screenshot
 ROUTE2_BASE_P2 = "https://gunnermaniac.com/pokeworld?local=13#8/48/"
 GATE_BASE = "https://gunnermaniac.com/pokeworld?local=50#4/7/"
 FOREST_BASE = "https://gunnermaniac.com/pokeworld?local=51#17/47/"
+CAN_BASE = "https://gunnermaniac.com/pokeworld?local=92#7/17/"
+SURGE_BASE = "https://gunnermaniac.com/pokeworld?local=92#7/12/"
 
 ROUTE2_COORDS = (0, 393, 175, 488)
 FOREST_COORDS = (50, 68, 593, 835)
+SURGE_COORDS = (50, 68, 205, 375)
 NPC1_COORDS = (184, 820)
 NPC2_COORDS = (250, 663)
 NPC3_COORDS = (455, 620)
@@ -33,7 +36,7 @@ def load_json(filename):
 
 def get_image_cropped(path_type: str, path_base: str, path: str, coords: tuple):
     driver.get(path_base + path)
-    if path_type == "forest": 
+    if path_type == "forest" or path_type == "surge": 
         ss = Screenshot(driver)
         ss.capture_full_page(output_path=f"{path_type}.png")
     else:
@@ -96,6 +99,23 @@ def create_images(file: str, path: int):
         path_image.save(f"path_data/p{path_data[stat]['path']}/path_images/{stats[0]}_{stats[1]}_{stats[2]}_{stats[3]}.png")
 
 
+def create_surge_images(file: str):
+    path_data = load_json(file)
+    for stat in path_data:
+        hp = int(stat)
+        cans = path_data[stat]["cans"]
+        surge = path_data[stat]["surge"]
+        #frames = path_data[stat].get("frames", [])
+        #igtsecs = path_data[stat].get("igtSecs", [])
+        #logs = path_data[stat].get("logs", {})
+        cans_image = get_image_cropped("surge", CAN_BASE, cans, SURGE_COORDS)
+        surge_image = get_image_cropped("surge", SURGE_BASE, surge, SURGE_COORDS)
+        path_image = Image.new('RGBA', (cans_image.width+surge_image.width, cans_image.height))
+        path_image.paste(cans_image, (0,0))
+        path_image.paste(surge_image, (cans_image.width,0))
+        path_image.save(f"path_data/surge/path_images/{hp}.png")
+
+
 # create_images("path_data/p3b/p3b.json", 3)
-create_images("path_data/p2a/p2a.json", 2)
+create_surge_images("path_data/surge/surge.json")
 # create_images("path_data/p2b/p2bf18g2g3.json", 2)
