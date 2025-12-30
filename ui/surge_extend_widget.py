@@ -45,10 +45,7 @@ class SurgeExtendWidget(QWidget):
 
     def change_stat(self, stat_name, delta):
         spinbox_map = {
-            'hp': self.hp_spin,
-            'maxhp': self.maxhp_spin,
-            'atk': self.atk_spin,
-            'def': self.def_spin
+            'hp': self.hp_spin
         }
 
         spinbox = spinbox_map.get(stat_name)
@@ -138,7 +135,7 @@ class SurgeExtendWidget(QWidget):
         igtsec_group = QGroupBox("IGT Second Failures")
         igtsec_layout = QVBoxLayout()
 
-        self.igtsec_label = QLabel("Nothing found for this turtle :(")
+        self.igtsec_label = QLabel("Nothing found for this hp :(")
         self.igtsec_label.setStyleSheet("font-size: 10pt; font-weight: semibold;")
         self.igtsec_label.setWordWrap(True)
         igtsec_layout.addWidget(self.igtsec_label)
@@ -172,7 +169,6 @@ class SurgeExtendWidget(QWidget):
         # create path tabs
         self.image_labels = {}
 
-        print("Creating right section...")
         tab = QWidget()
         tab_layout = QVBoxLayout()
 
@@ -190,7 +186,6 @@ class SurgeExtendWidget(QWidget):
 
         self.tab_widget.addTab(tab, "Surge")
         self.image_labels[1] = image_label
-        print("Finished creating right section...")
 
         return self.tab_widget
 
@@ -208,7 +203,6 @@ class SurgeExtendWidget(QWidget):
     def update_display(self):
         if not hasattr(self, 'image_labels') or not self.image_labels:
             return
-        print("Updating Surge Extend display...")
 
         stats_key = self.get_stats_key()
 
@@ -216,13 +210,11 @@ class SurgeExtendWidget(QWidget):
             'Frame': 0,
             'IGTSeconds': ""
         }
-        print("Updating Surge Extend display for stats key:", stats_key)
         # get current path data
         path_data = self.path_data.get("surge", {})
         stats_data = path_data.get(stats_key, None)
 
         if stats_data:
-            print("Found data for stats key:", stats_key)
             # update igt frames
             frames = stats_data.get("frames", [])
             if frames:
@@ -273,9 +265,9 @@ class SurgeExtendWidget(QWidget):
             else:
                 self.image_labels[self.current_path].setText(f"Image not found:\n{image_path}")
         else:
-            self.frames_label.setText("No data for this turtle/path :(")
-            self.igtsec_label.setText("No data for this turtle/path :(")
-            self.logs_text.setPlainText("No data for this turtle/path :(")
+            self.frames_label.setText("No data for this hp:(")
+            self.igtsec_label.setText("No data for this hp :(")
+            self.logs_text.setPlainText("No data for this hp :(")
             self.image_labels[self.current_path].setText("No matching path found for these stats")
 
 
