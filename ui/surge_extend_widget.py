@@ -10,6 +10,7 @@ from PyQt5.QtGui import QPixmap, QFont
 
 from core.hotkey_manager import HotkeySignals
 from core.data_loader import get_resource_path, get_temp_path, load_surge_path_data
+from core.file_utils import save_curr_igt
 from ui.widgets import HoverSpinBox
 from ui.dialogs import HotkeyDialog
 
@@ -231,8 +232,7 @@ class SurgeExtendWidget(QWidget):
             else:
                 self.igtsec_label.setText("No IGT seconds available")
 
-            with open(CURR_IGT_FILE, 'w') as file:
-                    json.dump(igtDict, file)
+            save_curr_igt(CURR_IGT_FILE, igtDict)
 
             # update frame logs
             logs = stats_data.get("logs", {})
