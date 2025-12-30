@@ -289,7 +289,7 @@ class PathFinder(QMainWindow):
             frames = stats_data.get("frames", [])
             if frames:
                 frames_str = ", ".join(map(str, frames))
-                igtDict["Frame"] = float(frames[0]) + float((len(frames)-1.0) / 2.0)
+                igtDict["Frame"] = (float(frames[0]) + float((len(frames)-1.0) / 2.0)) % 60
                 self.frames_label.setText(frames_str)
             else:
                 self.frames_label.setText("No frames available")
