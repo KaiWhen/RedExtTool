@@ -35,15 +35,6 @@ class ForestExtendWidget(QWidget):
 
 
     def setup_hotkey_connections(self):
-        self.hotkey_signals.hp_increase.connect(lambda: self.change_stat('hp', 1))
-        self.hotkey_signals.hp_decrease2.connect(lambda: self.change_stat('hp', -2))
-        self.hotkey_signals.hp_decrease3.connect(lambda: self.change_stat('hp', -3))
-        self.hotkey_signals.maxhp_increase.connect(lambda: self.change_stat('maxhp', 1))
-        self.hotkey_signals.maxhp_decrease.connect(lambda: self.change_stat('maxhp', -1))
-        self.hotkey_signals.atk_increase.connect(lambda: self.change_stat('atk', 1))
-        self.hotkey_signals.atk_decrease.connect(lambda: self.change_stat('atk', -1))
-        self.hotkey_signals.def_increase.connect(lambda: self.change_stat('def', 1))
-        self.hotkey_signals.def_decrease.connect(lambda: self.change_stat('def', -1))
         self.hotkey_signals.tab_cycle.connect(lambda: self.cycle_tab(False))
         self.hotkey_signals.tab_cycle_reverse.connect(lambda: self.cycle_tab(True))
 

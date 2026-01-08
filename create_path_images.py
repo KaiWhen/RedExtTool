@@ -56,7 +56,10 @@ def create_images(file: str, path: int):
     path_data = load_json(file)
     for stat in path_data:
         stats = [int(x) for x in stat.strip("()").split(",")]
-        # if stats != [19,21,12,13]: continue
+        stats_str = f"{stats[0]}_{stats[1]}_{stats[2]}_{stats[3]}"
+        img_path = f"path_data/forest/p{path_data[stat]['path']}/path_images/{stats_str}.png"
+        # if os.path.exists(img_path): continue
+        # if stats != [20,22,12,12]: continue
         route2 = path_data[stat]["route2"]
         gate = path_data[stat]["gate"]
         postFight = path_data[stat]["postFight"]
@@ -64,9 +67,9 @@ def create_images(file: str, path: int):
         npcs = path_data[stat]["npcs"]
         npcs_split = [npc.split(",") for npc in npcs.split(" or ")]
 
-        route2_base = ""
-        if path == 2 or path == 3:
-            route2_base = ROUTE2_BASE_P2
+        # route2_base = ""
+        # if path == 2 or path == 3:
+        route2_base = ROUTE2_BASE_P2
         route2_image = get_image_cropped("route2", route2_base, route2, ROUTE2_COORDS)
         gate_image = get_image_cropped("gate", GATE_BASE, gate, ())
         forest_image = get_image_cropped("forest", FOREST_BASE, forest, FOREST_COORDS)
@@ -96,7 +99,7 @@ def create_images(file: str, path: int):
             if npcs_split[0][2] != npcs_split[1][2]:
                 draw.text((NPC3_COORDS[0], NPC3_COORDS[1] + y_offset), npcs_split[1][2], fill=(255, 0, 0), font=font)
 
-        path_image.save(f"path_data/p{path_data[stat]['path']}/path_images/{stats[0]}_{stats[1]}_{stats[2]}_{stats[3]}.png")
+        path_image.save(img_path)
 
 
 def create_surge_images(file: str):
@@ -116,6 +119,7 @@ def create_surge_images(file: str):
         path_image.save(f"path_data/surge/path_images/{hp}.png")
 
 
+# create_images("path_data/forest/p2a/p2a.json", 2)
 # create_images("path_data/p3b/p3b.json", 3)
-create_surge_images("path_data/surge/surge.json")
+# create_surge_images("path_data/surge/surge.json")
 # create_images("path_data/p2b/p2bf18g2g3.json", 2)

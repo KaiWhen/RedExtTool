@@ -141,6 +141,7 @@ cython_debug/
 
 path_data/
 *.png
+*.json
 
 favicon2.ico
 

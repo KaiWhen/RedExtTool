@@ -27,18 +27,8 @@ class SurgeExtendWidget(QWidget):
 
         self.path_data = load_surge_path_data()
 
-        self.hotkey_signals = hotkey_signals
-        if self.hotkey_signals is not None:
-            self.setup_hotkey_connections()
-
         self.init_ui()
         self.update_display()
-
-
-    def setup_hotkey_connections(self):
-        self.hotkey_signals.hp_increase.connect(lambda: self.change_stat('hp', 1))
-        self.hotkey_signals.hp_decrease2.connect(lambda: self.change_stat('hp', -2))
-        self.hotkey_signals.hp_decrease3.connect(lambda: self.change_stat('hp', -3))
 
 
     def change_stat(self, stat_name, delta):

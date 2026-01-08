@@ -31,7 +31,8 @@ class HotkeyDialog(QDialog):
             'def_decrease': '- Def:',
             'def_increase': '+ Def:',
             'tab_cycle': 'Path ->',
-            'tab_cycle_reverse': '<- Path'
+            'tab_cycle_reverse': '<- Path',
+            'main_tab_cycle': 'Switch Tab'
         }
 
         for key, label in hotkey_labels.items():
@@ -87,7 +88,8 @@ class HotkeyDialog(QDialog):
             'def_decrease': '- Def',
             'def_increase': '+ Def',
             'tab_cycle': 'Path ->',
-            'tab_cycle_reverse': '<- Path'
+            'tab_cycle_reverse': '<- Path',
+            'main_tab_cycle': 'Switch Tab'
         }
         return labels.get(key, key)
 
@@ -104,7 +106,8 @@ class HotkeyDialog(QDialog):
             'def_decrease': 'f8',
             'def_increase': 'f9',
             'tab_cycle': 'tab',
-            'tab_cycle_reverse': 'shift+tab'
+            'tab_cycle_reverse': 'shift+tab',
+            'main_tab_cycle': 'ctrl+tab'
         }
 
         for key, default_value in defaults.items():
